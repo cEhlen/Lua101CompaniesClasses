@@ -41,4 +41,9 @@ comp:addDepartment(dep2)
 
 
 print("Total: " .. comp:total())
+print("Median: " .. comp:median())
+print("Number of Employees: " .. comp:numEmployees())
 print("Cut: " .. comp:total(comp:cut()))
+print("Median: " .. comp:median())
+print("Depth of Dep 1: " .. dep1:depth())
+print("Depth of Dep 2: " .. dep2:depth())

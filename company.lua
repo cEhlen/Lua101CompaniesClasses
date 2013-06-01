@@ -22,6 +22,20 @@ function Company:cut (  )
   end
 end
 
+function Company:numEmployees (  )
+  local t = 0
+  for _,v in pairs(self.departments) do
+    t = t + v:numEmployees()
+  end
+  return t
+end
+
+function Company:median (  )
+  local total = self:total()
+  local numEmp = self:numEmployees()
+  return total / numEmp
+end
+
 function Company:addDepartment( dep )
   --table_print(getmetatable(dep))
   if dep.is_a and dep:is_a(Department) then

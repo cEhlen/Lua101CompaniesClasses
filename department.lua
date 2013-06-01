@@ -33,6 +33,33 @@ function Department:cut (  )
   end
 end
 
+function Department:depth(  )
+  local tDepth = 0
+  if next(self.subDepartments) == nil then
+    tDepth = 1
+  else
+    for _,v in pairs(self.subDepartments) do
+      local subDepDepth = v:depth()
+      if subDepDepth > tDepth then
+        tDepth = subDepDepth
+      end
+    end
+    tDepth = tDepth + 1
+  end
+  return tDepth
+end
+
+function Department:numEmployees (  )
+  local t = 1
+  for _,v in pairs(self.subDepartments) do
+    t = t + v:numEmployees()
+  end
+  for _,v in pairs(self.employees) do
+    t = t + 1
+  end
+  return t
+end
+
 -- Below are a few basic setters. Here we just do a check if we only add classes
 -- of the right "type" to show of our class.is_a functionality.
 
